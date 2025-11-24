@@ -108,19 +108,32 @@ app.get('/api/session', (req, res) => {
 
 // Admin routes
 app.post('/api/admin/users', requireAdmin, (req, res) => {
-    const { username, password } = req.body;
+    const { username, password, role } = req.body;
     const users = readUsers();
-    
+
+    if (!username || !password) {
+        return res.status(400).json({ error: 'Username and password are required' });
+    }
+
     if (users.find(u => u.username === username)) {
         return res.status(400).json({ error: 'Username already exists' });
     }
-    
+
+    let newRole = 'streamer';
+    if (role === 'admin') {
+        // Only the main "admin" account may create other admin accounts
+        if (!req.session.user || req.session.user.username !== 'admin') {
+            return res.status(403).json({ error: 'Only main admin can create admin accounts' });
+        }
+        newRole = 'admin';
+    }
+
     users.push({
         username,
         password: bcrypt.hashSync(password, 10),
-        role: 'streamer'
+        role: newRole
     });
-    
+
     writeUsers(users);
     res.json({ success: true });
 });

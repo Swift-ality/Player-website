@@ -57,7 +57,7 @@ document.getElementById('createUserForm').addEventListener('submit', async (e) =
     const response = await fetch('/api/admin/users', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, password })
+        body: JSON.stringify({ username, password, role: 'streamer' })
     });
 
     if (response.ok) {
@@ -66,7 +66,29 @@ document.getElementById('createUserForm').addEventListener('submit', async (e) =
         loadStreamers();
     } else {
         const data = await response.json();
-        alert(data.error || 'Failed to create user');
+        alert(data.error || 'Failed to create streamer');
+    }
+});
+
+document.getElementById('createAdminForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const username = document.getElementById('newAdminUsername').value.trim();
+    const password = document.getElementById('newAdminPassword').value;
+
+    const response = await fetch('/api/admin/users', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password, role: 'admin' })
+    });
+
+    if (response.ok) {
+        document.getElementById('newAdminUsername').value = '';
+        document.getElementById('newAdminPassword').value = '';
+        alert('Admin account created');
+    } else {
+        const data = await response.json();
+        alert(data.error || 'Failed to create admin');
     }
 });
 
