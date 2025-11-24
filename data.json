@@ -1,0 +1,33 @@
+{
+  "players": {},
+  "globalPlayers": [
+    {
+      "id": 1764012343866,
+      "name": "Acton2",
+      "tags": [
+        "pvp",
+        "builder",
+        "fighter"
+      ],
+      "color": "#667eea"
+    },
+    {
+      "id": 1764012376620,
+      "name": "Swiftality",
+      "tags": [
+        "fighter",
+        "developer"
+      ],
+      "color": "#667eea"
+    }
+  ],
+  "selections": {
+    "Deehain": [
+      1764012343866,
+      1764012376620
+    ]
+  },
+  "globalTags": [
+    "pvp, builder, developer"
+  ]
+}

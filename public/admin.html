@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Player Manager</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Admin Panel</h1>
+            <div class="header-actions">
+                <span id="welcomeMsg"></span>
+                <button onclick="logout()">Logout</button>
+            </div>
+        </header>
+
+        <section class="admin-section">
+            <h2>Create Streamer Account</h2>
+            <form id="createUserForm">
+                <input type="text" id="newUsername" placeholder="Username" required>
+                <input type="password" id="newPassword" placeholder="Password" required>
+                <button type="submit">Create Streamer</button>
+            </form>
+        </section>
+
+        <section class="admin-section">
+            <h2>Streamers</h2>
+            <div id="streamersList"></div>
+        </section>
+
+        <section class="admin-section">
+            <h2>Global Tags</h2>
+            <form id="addTagForm">
+                <input type="text" id="tagName" placeholder="Tag name" required>
+                <button type="submit">Add Tag</button>
+            </form>
+            <div id="globalTagsList" class="tag-list"></div>
+        </section>
+
+        <section class="admin-section">
+            <h2>Manage Players</h2>
+            <form id="addPlayerForm">
+                <input type="text" id="playerName" placeholder="Player Name" required>
+                <input type="text" id="playerTags" placeholder="Extra tags (comma-separated)">
+                <div class="color-picker-wrapper">
+                    <label>Color:</label>
+                    <input type="color" id="playerColor" value="#667eea">
+                </div>
+                <div class="tag-select">
+                    <h3>Assign Global Tags</h3>
+                    <div id="playerTagChoices" class="tag-choices"></div>
+                </div>
+                <button type="submit">Add Player</button>
+            </form>
+            
+            <div class="filter-section">
+                <h3>Filter by Tags</h3>
+                <div id="tagFilters"></div>
+                <button id="clearFilters">Clear All Filters</button>
+            </div>
+            
+            <div id="playersList"></div>
+        </section>
+
+        <section class="admin-section">
+            <h2>View Streamer Selections</h2>
+            <select id="streamerSelect">
+                <option value="">Select a streamer</option>
+            </select>
+            <div id="streamerSelections" style="display: none;">
+                <h3>Selected Players</h3>
+                <div id="selectedPlayersList"></div>
+            </div>
+        </section>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html>

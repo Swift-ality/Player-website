@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Player Manager</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Player Manager</h1>
+        </header>
+
+        <section class="add-player">
+            <h2>Add Player</h2>
+            <form id="playerForm">
+                <input type="text" id="playerName" placeholder="Player Name" required>
+                <input type="text" id="playerTags" placeholder="Tags (comma-separated)">
+                <button type="submit">Add Player</button>
+            </form>
+        </section>
+
+        <section class="filter-section">
+            <h2>Filter by Tags</h2>
+            <div id="tagFilters"></div>
+            <button id="clearFilters">Clear All Filters</button>
+        </section>
+
+        <section class="players-list">
+            <h2>Players</h2>
+            <div id="playersList"></div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
