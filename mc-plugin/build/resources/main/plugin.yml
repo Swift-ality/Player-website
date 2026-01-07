@@ -1,0 +1,17 @@
+name: DeeHainNetworkBridge
+main: com.deehain.smp.networkbridge.NetworkBridgePlugin
+version: 1.0.0
+author: DeeHain
+api-version: "1.16"
+softdepend:
+  - PlaceholderAPI
+  - BetterTeams
+commands:
+  mcpbridge:
+    description: Reloads the DeeHain network bridge config
+    usage: "/mcpbridge reload"
+    permission: mcpbridge.reload
+permissions:
+  mcpbridge.reload:
+    description: Allows reloading the plugin configuration
+    default: op

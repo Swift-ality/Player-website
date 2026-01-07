@@ -1,6 +1,7 @@
 let players = [];
 let selections = [];
 let activeFilters = new Set();
+let selectionLimit = 5;
 
 async function checkAuth() {
     const response = await fetch('/api/session');
@@ -16,13 +17,16 @@ async function checkAuth() {
 }
 
 async function loadData() {
-    const [playersRes, selectionsRes] = await Promise.all([
+    const [playersRes, selectionsRes, limitRes] = await Promise.all([
         fetch('/api/players'),
-        fetch('/api/selections')
+        fetch('/api/selections'),
+        fetch('/api/selection-limit').catch(() => ({ json: () => ({ limit: 5 }) }))
     ]);
 
     players = await playersRes.json();
     selections = await selectionsRes.json();
+    const limitData = await limitRes.json();
+    selectionLimit = limitData.limit || 5;
     renderPlayers();
     renderSelectedPlayers();
     renderTagFilters();
@@ -38,7 +42,11 @@ async function toggleSelection(playerId) {
         method: 'POST'
     });
 
-    if (!response.ok) return;
+    if (!response.ok) {
+        const error = await response.json();
+        alert(error.error || 'Failed to select player');
+        return;
+    }
 
     if (selections.includes(playerId)) {
         selections = selections.filter(id => id !== playerId);
@@ -90,7 +98,7 @@ function renderPlayers() {
     }
 
     playersList.innerHTML = '';
-    const filteredPlayers = players.filter(playerMatchesFilters);
+    const filteredPlayers = players.filter(p => playerMatchesFilters(p) && !selections.includes(p.id));
 
     if (filteredPlayers.length === 0) {
         playersList.innerHTML = '<div class="empty-state">No players match the selected filters.</div>';
@@ -186,6 +194,9 @@ function renderSelectedPlayers() {
                     </div>
                     <div class="player-name">${player.name}</div>
                 </div>
+                <button class="select-btn selected" onclick="event.stopPropagation(); toggleSelection(${player.id})">
+                    Remove
+                </button>
             </div>
             <div class="player-tags">${tagsHTML}</div>
         `;

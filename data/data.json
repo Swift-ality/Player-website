@@ -1,0 +1,79 @@
+{
+  "players": {},
+  "globalPlayers": [
+    {
+      "id": 1765132528643,
+      "name": "swiftality",
+      "tags": [],
+      "color": "#667eea"
+    },
+    {
+      "id": 1765570061573,
+      "name": "deehain",
+      "tags": [],
+      "color": "#667eea"
+    },
+    {
+      "id": 1765570064406,
+      "name": "acton2",
+      "tags": [],
+      "color": "#667eea"
+    },
+    {
+      "id": 1765570068879,
+      "name": "technoblade",
+      "tags": [],
+      "color": "#667eea"
+    },
+    {
+      "id": 1765642868997,
+      "name": "ivelin_vaccant",
+      "tags": [
+        "e"
+      ],
+      "color": "#667eea"
+    },
+    {
+      "id": 1765805527006,
+      "name": "swift",
+      "tags": [],
+      "color": "#667eea"
+    },
+    {
+      "id": 1765805532686,
+      "name": "ilovepookies",
+      "tags": [],
+      "color": "#667eea"
+    },
+    {
+      "id": 1765805535807,
+      "name": "palacity",
+      "tags": [],
+      "color": "#667eea"
+    }
+  ],
+  "selections": {
+    "Deehain": [],
+    "ivelin_vaccant": [],
+    "dev": [
+      1765132528643,
+      1765570061573,
+      1765570064406,
+      1765570068879,
+      1765642868997,
+      1765805527006,
+      1765805532686
+    ],
+    "dev2": []
+  },
+  "globalTags": [
+    "2\\3",
+    "42\\3"
+  ],
+  "selectionLimit": 30,
+  "pluginEndpoint": {
+    "ip": "localhost",
+    "port": 8123,
+    "token": "change-me"
+  }
+}
