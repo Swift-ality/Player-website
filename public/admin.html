@@ -49,6 +49,37 @@
         </section>
 
         <section class="admin-section">
+            <h2>Plugin Connection Settings</h2>
+            <form id="pluginEndpointForm">
+                <div style="display: flex; gap: 10px; flex-wrap: wrap; width: 100%;">
+                    <input type="text" id="pluginIp" placeholder="Plugin IP" required style="flex: 2; min-width: 200px;">
+                    <input type="number" id="pluginPort" placeholder="Port" required style="flex: 1; min-width: 100px;">
+                </div>
+                <input type="text" id="pluginToken" placeholder="Auth Token (optional)" style="width: 100%;">
+                <button type="submit">Update Endpoint</button>
+            </form>
+            <div style="display: flex; gap: 10px; margin-top: 15px; flex-wrap: wrap;">
+                <button id="testPing" style="background: #17a2b8; flex: 1;">Test Connection</button>
+                <button id="resendAllData" style="background: #28a745; flex: 1;">Force Re-send All Selections</button>
+            </div>
+            <div id="currentEndpoint" style="margin-top: 10px;"></div>
+            <div id="debugOutput" style="margin-top: 15px; padding: 15px; background: #1a1a1a; border-radius: 8px; display: none;">
+                <h4 style="color: #17a2b8; margin-top: 0;">Debug Output</h4>
+                <pre id="debugText" style="color: #ddd; margin: 0; white-space: pre-wrap; word-wrap: break-word; font-size: 12px; font-family: monospace;"></pre>
+            </div>
+        </section>
+
+        <section class="admin-section">
+            <h2>Selection Limit</h2>
+            <form id="selectionLimitForm">
+                <label for="selectionLimit">Maximum number of players per streamer:</label>
+                <input type="number" id="selectionLimit" min="1" value="5" required>
+                <button type="submit">Update Limit</button>
+            </form>
+            <div id="currentLimit"></div>
+        </section>
+
+        <section class="admin-section">
             <h2>Manage Players</h2>
             <form id="addPlayerForm">
                 <input type="text" id="playerName" placeholder="Player Name" required>
@@ -85,6 +116,6 @@
         </section>
     </div>
 
-    <script src="admin.js"></script>
+    <script src="admin.js?v=2"></script>
 </body>
 </html>

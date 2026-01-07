@@ -1,0 +1,17 @@
+[
+  {
+    "username": "admin",
+    "password": "$2a$10$c1y6z8ETWTGjMvCxP8hyzurEY7TGOsabEaeGNtU16niaEVEAiJet6",
+    "role": "admin"
+  },
+  {
+    "username": "ivelin_vaccant",
+    "password": "$2a$10$unPEsKeGxHT7bLcelGOSOOIdePIB3nmTFQ8DPiU8OHrnlI9GqEVzG",
+    "role": "streamer"
+  },
+  {
+    "username": "dev",
+    "password": "$2a$10$hKsrU7ktOf2LF53z4piqa.C8jtvQDdzxIs0xptzx0nB3.Rlbp.ixa",
+    "role": "streamer"
+  }
+]

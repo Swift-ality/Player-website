@@ -1,0 +1,61 @@
+# IP and port the plugin will bind to for incoming HTTP requests
+listen-ip: "0.0.0.0"
+listen-port: 8123
+
+# Auth token the website must send as `token=` in the POST body
+# Make sure this matches what you configure on the website.
+auth-token: "change-me"
+
+# Commands to run on valid requests (optional, in addition to BetterTeams logic).
+# Placeholders:
+#   %player_name%   - player name from the request
+#   %streamer%      - streamer name from the request / config
+#   %player_uuid%   - (optional) player UUID if known; "unknown" otherwise
+# You can also use PlaceholderAPI placeholders if PlaceholderAPI is installed.
+commands:
+  - "say [Bridge] Streamer %streamer% added %player_name% to their nation"
+  # - "give %player_name% minecraft:diamond 1"
+
+# We are using Minecraft IGNs everywhere, so no UUID-based mappings are required.
+# Streamer IGN is directly linked to the nation/team name.
+# This also implies streamers are the leaders of their nations and won't be removed.
+streamer-nations:
+  Pulse:      "Pulse"
+  Chonk:      "Chonk"
+  Lukas:      "Lukas"
+  Bungi:      "Bungi"
+  Simon:      "Simon"
+  Lemon:      "Lemon"
+  Palacity:   "Palacity"
+  Felnar:     "Felnar"
+  Wymsicaal:  "Wymsicaal"
+  Ceecil:     "Ceecil"
+  Deehain:    "Deehain"
+
+# BetterTeams command templates (editable in-game via config.yml + /mcpbridge reload)
+# %player_name% - player name
+# %nation%      - nation / team name resolved from streamer-nations
+team-add-command: "teamadmin add %player_name% %nation%"
+team-remove-command: "teamadmin remove %player_name% %nation%"
+
+# If true, completely skip all BetterTeams API usage and offline queue logic,
+# and only execute the above team-add / team-remove commands.
+# This is the safest option if you just want the bridge to fire commands and
+# let BetterTeams (or other plugins) handle everything.
+disable-betterteams-api: false
+
+# If true, BetterTeams commands will still run even if the API existence check
+# fails or the nation does not currently exist according to BetterTeams.
+# Useful if the BetterTeams API package changes or you want to rely solely on
+# the commands themselves to manage teams.
+always-run-team-commands: false
+
+# If true, when a player is removed from a team via the website, they will be
+# kicked from the server (if online) and removed from the whitelist.
+# This runs in addition to any team-remove-command / BetterTeams logic.
+kick-and-unwhitelist-on-remove: false
+
+# If true, when a player is removed from a team via the website, they will be
+# removed from the whitelist, but NOT kicked. If both this and
+# kick-and-unwhitelist-on-remove are true, the kick + unwhitelist behavior wins.
+unwhitelist-on-remove: false
